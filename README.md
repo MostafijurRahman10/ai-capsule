@@ -112,7 +112,7 @@ curl -i -H "Cookie: token=fake-token-123" \
   https://ai-capsule-2pni.onrender.com/api/capsules
 ```
 
-Both requests should return `401 Unauthorized`.
+Both deployed cURL checks returned 401 Unauthorized: one without a cookie and one with token=fake-token-123
 
 ## Deployment
 
@@ -138,6 +138,8 @@ SQLite is suitable for this assignment, but Render's free filesystem is ephemera
 
 ## AI-assisted development statement
 
-I designed, developed, tested, and deployed the application. AI was used for suggestions and documentation support. I reviewed, modified, and verified all code before submission.
+I built, tested, and deployed AI Capsule. I used AI for suggestions and documentation support, then reviewed and adjusted the work myself.
 
-I also secured data ownership by using the verified JWT user ID in every protected database query.
+During development, I found that accepting a record’s owner from the browser could let a user access someone else’s data. I corrected this by taking the user ID from the verified JWT and including it in protected database queries. I chose SQLite to keep the application simple, and I documented the storage limitation on Render.
+
+I verified GitHub login and authenticated CRUD through the deployed application. My API tests check JWT rejection, CRUD, and protection against access to another user’s records.
